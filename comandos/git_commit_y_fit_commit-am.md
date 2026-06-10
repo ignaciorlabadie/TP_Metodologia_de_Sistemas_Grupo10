@@ -72,3 +72,9 @@ Crear un commit rápido con todos los archivos modificados:
 ```bash
 git commit -am "fix: corregir bug en login"
 ``` 
+
+---
+
+## Detalles importantes: 
+- No se incluyen los archivos nuevos, si un archivo nunca fue trakeado con git add anteriormente, este comando no lo va a incluir. 
+- Solo afecta a los archivos ya trackeados anteriormente.
