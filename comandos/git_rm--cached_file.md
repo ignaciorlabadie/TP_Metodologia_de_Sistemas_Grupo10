@@ -20,3 +20,8 @@ Dejar de trackear un archivo "config.json":
 git rm --cached config.json
 git commit -m "Dejar de trackear config.json"
 ```
+---
+
+## Detalles importantes: 
+- El archivo no se borra de la carpeta local, se elimina solo del control de versiones. 
+- Para borrarlo de la carpeta local usar "git rm <file>"
