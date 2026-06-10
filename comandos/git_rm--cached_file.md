@@ -1,96 +1,27 @@
-## git rm
+# git rm --cached <file>
 
-## ¿Qué hace git rm?
-
-El comando "git rm" se utiliza para **eliminar archivos del repositorio Git**.
-Al usarlo, el archivo se elimina tanto del:
-
-- Directorio de trabajo
-- Área de staging (index)
-
-y queda preparado para el próximo commit.
+## ¿Qué hace?
+- "git rm --cached <file>" → elimina el archivo del índice de Git (staging area), pero no lo borra de la carpeta local.  
+- El archivo deja de estar “trackeado” por Git, aunque sigue existiendo en el proyecto.
 
 ---
 
-## Uso básico
-
-En la terminal:
-git rm archivo.txt
-git commit -m "Elimino archivo.txt"
-
----
-
-## Casos de uso
-
-### 1. Eliminar un archivo normalmente
-
-En la terminal:
-git rm archivo.txt
-
-Esto elimina el archivo y registra el cambio automáticamente.
+## ¿Para qué se usa?
+Se usa cuando:
+- Se agrega un archivo por error con "git add" y no se desea incluirlo en el commit.  
+- Se quiere dejar de versionar un archivo (ejemplo: ".env", archivos temporales o configuraciones locales).  
+- Se quiere limpiar el repositorio, haciendo que Git ignore ese archivo en el futuro (junto con ".gitignore").  
 
 ---
 
-### 2. Eliminar archivo solo del repositorio (mantenerlo local)
-
-En la terminal:
-git rm --cached archivo.txt
-
-Resultado:
-
-- El archivo permanece en tu computadora
-- Git deja de rastrearlo
-
-Uso típico con `.gitignore`:
-
-En la terminal:
-git rm --cached .env
-
+## Ejemplos
+Dejar de trackear un archivo "config.json":
+```bash
+git rm --cached config.json
+git commit -m "Dejar de trackear config.json"
+```
 ---
 
-### 3. Eliminar múltiples archivos
-
-En la terminal:
-git rm \*.log
-
----
-
-### 4. Eliminar un directorio completo
-
-En la terminal:
-git rm -r carpeta/
-
----
-
-### 5. Forzar eliminación
-
-Si el archivo tiene cambios sin confirmar:
-
-En la terminal:
-git rm -f archivo.txt
-
----
-
-## Diferencias importantes
-
-| Comando              | Acción                                                    |
-| -------------------- | --------------------------------------------------------- |
-| "rm archivo.txt"     | Borra el archivo, pero Git no lo registra automáticamente |
-| "git rm archivo.txt" | Borra el archivo y registra el cambio en Git              |
-
----
-
-## Flujo típico
-
-En la terminal:
-git rm archivo.txt
-git commit -m "Elimino archivo innecesario"
-git push
-
----
-
-## Cuándo usar "git rm"
-
-- Eliminar archivos del repositorio
-- Limpiar archivos innecesarios
-- Dejar de trackear archivos ("--cached")
+## Detalles importantes: 
+- El archivo no se borra de la carpeta local, se elimina solo del control de versiones. 
+- Para borrarlo de la carpeta local usar "git rm <file>"
