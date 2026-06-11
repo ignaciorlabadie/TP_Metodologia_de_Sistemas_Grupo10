@@ -121,3 +121,53 @@ git revert -m 1 <hash_del_merge>
 # Detalles importantes:
 - A diferencia de **"git reset"**, **no** borra commits, el historial se mantiene.
 - Es mejor usar **"git revert"**, en trabajos colaborativos, porque se mantiene el historial y sigue en el "presente", no vamos a commits anteriores para restaurarlos. 
+
+---
+
+# Git clean
+
+## ¿Qué hace?
+- **"git clean"** → elimina archivos que **no están siendo trackeados por Git** (archivos **sin git add**).  
+- Sirve para limpiar el directorio de trabajo de archivos temporales, pruebas o basura que no forman parte del repositorio.  
+
+---
+
+## ¿Para qué se usa?
+- Se quiere borrar archivos generados automáticamente (logs, compilados, temporales).  
+- Dejar la carpeta de trabajo limpia, solo con los archivos versionados.   
+
+---
+
+## Ejemplos
+
+1. Ver qué se borraría 
+```bash
+git clean -n
+```
+Muestra qué archivos serían eliminados
+
+2. Eliminar archivos no trackeados
+```bash 
+git clean -f
+```
+Borra los archivos que no están en el control de versiones (untracked)
+
+3. Eliminar directorios no trackeados
+```bash
+git clean -fd
+```
+Borra archivos y carpetas untracked
+
+4. Eliminar archivos ignorados por **.gitignore**
+```bash 
+git clean -fx
+```
+Borra los archivos listados en .gitignore
+
+---
+
+# Detalles importantes:
+- Una vez eliminados, estos archivos no pueden ser recuperados con Git.
+- Junto con **"git reset"**, sirven para mantener el repo limpio y consistente
+    - git reset, deshace commits y mueve HEAD
+    - git clean, borra archivos untracked  
