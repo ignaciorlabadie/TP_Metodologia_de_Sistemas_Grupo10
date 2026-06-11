@@ -10,9 +10,10 @@ git shortlog -sn --all
 11  JuanForicher
  8  EmmanuelF90
  7  Ignacio
+ 5  ramiro_stallone
  4  Ignacio Ramirez Labadie
  3  Ramiro
- 2  ramiro_stallone
+ 
 ```
 
 El integrante con más commits es **JuanForicher** con 11 commits.
