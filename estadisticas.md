@@ -7,26 +7,27 @@ git shortlog -sn --all
 ```
 
 ```
-11  JuanForicher
- 8  EmmanuelF90
- 7  Ignacio
- 5  ramiro_stallone
- 4  Ignacio Ramirez Labadie
- 3  Ramiro
- 
+19  JuanForicher
+8  EmmanuelF90
+7  Ignacio
+7  Ignacio Ramirez Labadie
+6  Ramiro
+2  ramiro_stallone
+
 ```
 
-El integrante con más commits es **JuanForicher** con 11 commits.
+El integrante con más commits es **JuanForicher** con 19 commits.
 
 ---
 
 ## Cantidad total de merges
 
 ```bash
-git log --oneline --merges | wc -l
+git log --oneline --merges | Measure-Object -Line
+
 ```
 
-**15 merges** en total.
+**19 merges** en total.
 
 ---
 
@@ -63,13 +64,22 @@ git branch -a
 ## Commit con mayor cantidad de archivos modificados
 
 ```bash
-git log --all --format="%H" | while read hash; do
-  count=$(git diff-tree --no-commit-id -r --name-only $hash | wc -l)
-  echo "$count $hash"
-done | sort -rn | head -5
+git log --all --format="%H" | ForEach-Object {
+  $hash = $_
+  $count = (git diff-tree --no-commit-id -r --name-only $hash | Measure-Object -Line).Lines
+  "$count $hash"
+} | Sort-Object {[int]($_.Split()[0])} -Descending | Select-Object -First 5
+
 ```
 
-El commit con más archivos modificados es el `e2452f6` con **5 archivos**.
+El commit con más archivos modificados es el `e2452f68` con **5 archivos** (renombrados).
+El script cuenta **10 archivos** porque ve las dos rutas de cada renombre
+
+Para mostrar el commit
+```bash
+git show --stat e2452f68
+
+```
 
 ```
 commit e2452f68da8f8e628b3ca932213d2bf7232b83de

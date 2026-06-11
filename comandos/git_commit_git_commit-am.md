@@ -1,4 +1,4 @@
-# git commit
+# git commit / git commit -am 
 
 ## ¿Qué hace?
 
@@ -51,3 +51,30 @@ git commit -m "docs: agregar explicaciones de git init, add y commit"
 - Mensaje escrito en el commit.
 
 Esto ayuda a tener un historial claro del proyecto.
+
+# git commit -am "<mensaje>"
+
+## ¿Qué hace?
+
+- "git commit -am "<mensaje>"" → crea un commit con mensaje y automáticamente incluye todos los archivos modificados, solamente los que ya estaban trackeados.  
+- Es una combinación de "git add" + "git commit -m" en un solo comando.  
+
+---
+
+## ¿Para qué se usa?
+Se usa para ahorrar tiempo cuando:
+- Ya tenés archivos que Git conoce (trackeados).   
+
+---
+
+## Ejemplos
+Crear un commit rápido con todos los archivos modificados:
+```bash
+git commit -am "fix: corregir bug en login"
+``` 
+
+---
+
+## Detalles importantes: 
+- No se incluyen los archivos nuevos, si un archivo nunca fue trakeado con git add anteriormente, este comando no lo va a incluir. 
+- Solo afecta a los archivos ya trackeados anteriormente.
